@@ -35,24 +35,34 @@ interface PlaceholderPageProps {
 export function PlaceholderPage({ page }: PlaceholderPageProps) {
   const data = content[page]
   return (
-    <div className="page-content placeholder-page">
-      <section className="placeholder-hero">
-        <div className="placeholder-copy">
-          <span className="eyebrow">{data.eyebrow}</span>
-          <h2>{data.title}</h2>
-          <p>{data.description}</p>
-          <span className="coming-soon"><Construction size={15} /> Sedang disiapkan</span>
+    <div className="mx-auto min-h-[calc(100vh-190px)] max-w-[1600px] px-[37px] pt-[27px] pb-[22px] max-xl:px-[25px] max-md:min-h-0 max-md:px-[15px] max-md:pt-[18px] max-md:pb-5">
+      <section className="relative flex min-h-[260px] items-center overflow-hidden rounded-2xl shadow-sm bg-surface p-[34px] max-md:min-h-[270px] max-md:px-5 max-md:py-6">
+        <div className="relative z-[2] max-w-[470px] max-md:max-w-[75%]">
+          <span className="inline-flex items-center gap-2 text-[9px] font-extrabold tracking-[1.55px] text-[#b99c81]">{data.eyebrow}</span>
+          <h2 className="mt-[15px] mb-[11px] max-w-[430px] font-[Georgia,serif] text-[clamp(27px,3vw,39px)] leading-[1.15] font-medium tracking-[-1px] max-md:text-[29px]">{data.title}</h2>
+          <p className="mb-[18px] mt-0 max-w-[390px] text-[12px] leading-[1.8] text-text-soft max-md:text-[11px]">{data.description}</p>
+          <span className="inline-flex items-center gap-[7px] rounded-[7px] bg-accent-soft px-[10px] py-2 text-[10px] font-bold text-accent"><Construction size={15} /> Sedang disiapkan</span>
         </div>
-        <div className="placeholder-art"><div className="placeholder-circle"><ArrowRight size={58} strokeWidth={1.2} /></div><span className="placeholder-spark spark-a">✳</span><span className="placeholder-spark spark-b">✳</span></div>
-      </section>
-      <section className="panel placeholder-features">
-        <h2>Yang akan tersedia</h2>
-        <p>Fitur yang direncanakan untuk halaman ini.</p>
-        <div className="feature-grid">
-          {data.items.map((item, index) => <div className="feature-item" key={item}><span>0{index + 1}</span><strong>{item}</strong><ArrowRight size={16} /></div>)}
+        <div className="absolute inset-y-0 right-0 left-[55%] grid place-items-center bg-[radial-gradient(ellipse_at_center,var(--accent-soft),transparent_65%)] max-md:left-1/2 max-md:opacity-50">
+          <div className="grid size-[150px] place-items-center rounded-full shadow-sm bg-surface text-accent max-md:size-[110px]"><ArrowRight className="max-md:size-10" size={58} strokeWidth={1.2} /></div>
+          <span className="absolute top-[22%] right-[20%] text-[25px] text-accent">✳</span>
+          <span className="absolute bottom-[19%] left-[18%] text-[17px] text-accent">✳</span>
         </div>
       </section>
-      <div className="placeholder-note"><Construction size={16} /><span>Halaman ini masih berupa kerangka UI. Data dan interaksi akan dibuat pada tahap implementasi berikutnya.</span></div>
+      <section className="mt-[18px] rounded-[13px] shadow-sm bg-surface p-6 max-md:p-[18px]">
+        <h2 className="m-0 text-[14px]">Yang akan tersedia</h2>
+        <p className="mt-[6px] mb-5 text-[10px] text-text-muted">Fitur yang direncanakan untuk halaman ini.</p>
+        <div className="grid grid-cols-2 gap-[10px] max-md:grid-cols-1">
+          {data.items.map((item, index) => (
+            <div className="flex min-h-[57px] items-center gap-3 rounded-[9px] shadow-sm bg-surface p-3" key={item}>
+              <span className="text-[10px] font-bold text-accent">0{index + 1}</span>
+              <strong className="flex-1 text-[11px] font-semibold">{item}</strong>
+              <ArrowRight className="text-text-muted" size={16} />
+            </div>
+          ))}
+        </div>
+      </section>
+      <div className="mt-[17px] flex items-center gap-[9px] text-[10px] leading-[1.6] text-text-muted"><Construction size={16} /><span>Halaman ini masih berupa kerangka UI. Data dan interaksi akan dibuat pada tahap implementasi berikutnya.</span></div>
     </div>
   )
 }

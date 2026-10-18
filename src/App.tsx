@@ -24,14 +24,17 @@ export default function App() {
   const toggleTheme = () => setTheme(current => current === 'light' ? 'dark' : 'light')
 
   return (
-    <div className="app-shell">
+    <div className="min-h-screen bg-bg text-text">
       <Sidebar activePage={activePage} onNavigate={setActivePage} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="main-area">
+      <main className="ml-[252px] min-h-screen max-xl:ml-[225px] max-md:ml-0">
         <Header page={activePage} theme={theme} onToggleTheme={toggleTheme} onOpenSidebar={() => setSidebarOpen(true)} />
         {activePage === 'dashboard'
           ? <DashboardPage />
           : <PlaceholderPage page={activePage} />}
-        <footer className="app-footer"><span>© 2026 ruangkopi. Admin Panel</span><span>Dibuat dengan ☕ dan perhatian.</span></footer>
+        <footer className="flex justify-between gap-[15px] px-[37px] pt-[18px] pb-[22px] text-[9px] text-text-muted max-xl:px-[25px] max-md:flex-col max-md:gap-[7px] max-md:p-[15px]">
+          <span>© 2026 ruangkopi. Admin Panel</span>
+          <span>Dibuat dengan ☕ dan perhatian.</span>
+        </footer>
       </main>
     </div>
   )
